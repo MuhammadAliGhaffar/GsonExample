@@ -1,0 +1,17 @@
+{
+  "items": [
+    {
+      "name": "Steak",
+      "price": 200.0
+    },
+    {
+      "name": "Kabaab",
+      "price": 400.0
+    },
+    {
+      "name": "Desert",
+      "price": 100.0
+    }
+  ],
+  "name": "Future Studio Steak House"
+}

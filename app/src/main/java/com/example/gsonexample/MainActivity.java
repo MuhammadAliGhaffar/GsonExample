@@ -5,11 +5,15 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.gsonexample.Info.FSInfo;
 import com.example.gsonexample.Restaurant.RestaurantSample;
 import com.example.gsonexample.User.UserSample;
 import com.example.gsonexample.UserNested.UserAddress;
 import com.example.gsonexample.UserNested.UserNested;
 import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
 
         //serializeUserNested();
         //deserializeUserNested();
+
+        //serializeListRestaurant();
+        deserializeListRestaurant();
     }
 
     private static void serializeUserSample() {
@@ -66,7 +73,28 @@ public class MainActivity extends AppCompatActivity {
         String restaurantJson = "{ 'name':'Future Studio Steak House', 'owner':{ 'name':'Christian', 'address':{ 'city':'Magdeburg', 'country':'Germany', 'houseNumber':'42', 'street':'Main Street'}},'cook':{ 'age':18, 'name': 'Marcus', 'salary': 1500 }, 'waiter':{ 'age':23, 'name': 'Ali', 'salary': 4000}}";
 
         RestaurantSample restaurantSample = new Gson().fromJson(restaurantJson, RestaurantSample.class);
+    }
 
+    private static void serializeListRestaurant() {
+        List<RestaurantSample.RestaurantMenuItems> menuItems = new ArrayList<>();
+        menuItems.add(new RestaurantSample.RestaurantMenuItems("Steak", 200f));
+        menuItems.add(new RestaurantSample.RestaurantMenuItems("Kabaab", 400f));
+        menuItems.add(new RestaurantSample.RestaurantMenuItems("Desert", 100f));
 
+        RestaurantSample restaurantSample = new RestaurantSample("Future Studio Steak House", menuItems);
+        Log.i(_TAG,new Gson().toJson(restaurantSample));
+    }
+
+    private static void deserializeListRestaurant() {
+        //String founderJson = "[{'name': 'Christian','flowerCount': 1}, {'name': 'Marcus', 'flowerCount': 3}, {'name': 'Norman', 'flowerCount': 2}]";
+        Gson gson = new Gson();
+        //FSFounder[] founderArray = gson.fromJson(founderJson, FSFounder[].class);
+
+        //IF ArrayList
+//        Type founderListType = new TypeToken<ArrayList<FSFounder>>(){}.getType();
+//        List<FSFounder> founderList = gson.fromJson(founderJson, founderListType);
+
+        String generalInfoJson = "{'name': 'Future Studio Dev Team', 'website': 'https://futurestud.io', 'founders': [{'name': 'Christian', 'flowerCount': 1 }, {'name': 'Marcus','flowerCount': 3 }, {'name': 'Norman','flowerCount': 2 }]}";
+        FSInfo fSInfoObject = gson.fromJson(generalInfoJson, FSInfo.class);
     }
 }

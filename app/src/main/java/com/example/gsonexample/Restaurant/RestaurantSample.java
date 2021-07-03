@@ -1,23 +1,42 @@
 package com.example.gsonexample.Restaurant;
 
-import com.example.gsonexample.UserNested.UserAddress;
+
+import java.util.List;
 
 public class RestaurantSample {
     String name;
 
-    // Objects
-    RestaurantOwner owner;
-    RestaurantStaff cook;
-    RestaurantStaff waiter;
+    List<RestaurantMenuItems> items;
 
-    private class RestaurantOwner {
-        String name;
-        UserAddress address;
+    // Objects
+//    RestaurantOwner owner;
+//    RestaurantStaff cook;
+//    RestaurantStaff waiter;
+//
+//    private class RestaurantOwner {
+//        String name;
+//        UserAddress address;
+//    }
+//
+//    private class RestaurantStaff {
+//        int age;
+//        int salary;
+//        String name;
+//    }
+
+    //For ArrayList
+    public RestaurantSample(String name, List<RestaurantMenuItems> items) {
+        this.name = name;
+        this.items = items;
     }
 
-    private class RestaurantStaff {
-        int age;
-        int salary;
+    public static class RestaurantMenuItems{
         String name;
+        float price;
+
+        public RestaurantMenuItems(String name, float price) {
+            this.name = name;
+            this.price = price;
+        }
     }
 }
