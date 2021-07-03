@@ -1,0 +1,12 @@
+{
+  "name": "Ali",
+  "email": "abc@123.com",
+  "age": 23,
+  "isDeveloper": true,
+  "userAddress": {
+    "street": "Main street",
+    "houseNumber": "B104",
+    "city": "karachi",
+    "country": "pakistan"
+  }
+}
